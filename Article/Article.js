@@ -115,6 +115,7 @@ const data = [
 
 
 function contentCreator (info){
+  //create elements
   const article = document.createElement('div');
   const title = document.createElement('h2');
   const date = document.createElement('p');
@@ -122,7 +123,9 @@ function contentCreator (info){
   const para2 = document.createElement('p');
   const para3 = document.createElement('p');
   const expand = document.createElement('span');
+  
 
+  //create structure
   article.appendChild(title);
   article.appendChild(date);
   article.appendChild(para1);
@@ -130,25 +133,33 @@ function contentCreator (info){
   article.appendChild(para3);
   article.appendChild(expand);
 
+  //set content
   title.textContent = info.title;
-  date.texContent = info.date;
+  date.textContent = info.date;
   para1.textContent = info.firstParagraph;
   para2.textContent = info.secondParagraph;
   para3.textContent = info.thirdParagraph;
+  expand.textContent = '\u25bc';
+  
 
+  //apply styles
   article.classList.add('article');
   date.classList.add('date');
   expand.classList.add('expandButton');
 
+  
+  //toggle article open on click
   expand.addEventListener('click', (event) => {
-       article.classList.toggle('article-on');
+       article.classList.toggle('article-open');
   })
 
   return article;
 }
 
+//get div container
 const art = document.querySelector('.articles');
 
+//iterate over array
 data.map(parameter => {
   art.appendChild(contentCreator(parameter));
 });

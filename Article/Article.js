@@ -85,7 +85,19 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Code on the go',
+    date: 'Sep 11th, 2019',
+    firstParagraph: `We're going to explore the outside world someday, right? Far beyond these walls, there's flaming water, land made of ice, and fields of sand spread wide. It's the world my parents wanted to go to. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Charmander Lorem ipsum dolor sit amet, consectetur
+    adipiscing elit.`,
+
+    secondParagraph: `Kagome taught me how to smile, how to believe in people. Kagome was the reason I could make friends, and rely on those friends. To shed tears for others, to understand true strength and kindness…They’re all things I learned from Kagome. Kagome was born to meet me, and I was born for her! Kagome taught me how to smile, how to believe in people. Kagome was the reason I could make friends, and rely on those friends. To shed tears for others, to understand true strength and kindness…They’re all things I learned from Kagome. Kagome was born to meet me, and I was born for her!  `,
+
+    thirdParagraph: `For God so loved the world, that he gave his only Son, that whoever believes in him should not perish but have eternal life. For God did not send his Son into the world to condemn the world, but in order that the world might be saved through him. Whoever believes in him is not condemned, but whoever does not believe is condemned already, because he has not believed in the name of the only Son of God. And this is the judgment: the light has come into the world, and people loved the darkness rather than the light because their works were evil. For everyone who does wicked things hates the light and does not come to the light, lest his works should be exposed. But whoever does what is true comes to the light, so that it may be clearly seen that his works have been carried out in God.`
   }
+
 ];
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
@@ -112,3 +124,54 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+
+
+function contentCreator (info){
+  //create elements
+  const article = document.createElement('div');
+  const title = document.createElement('h2');
+  const date = document.createElement('p');
+  const para1 = document.createElement('p');
+  const para2 = document.createElement('p');
+  const para3 = document.createElement('p');
+  const expand = document.createElement('span');
+  
+
+  //create structure
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(para1);
+  article.appendChild(para2);
+  article.appendChild(para3);
+  article.appendChild(expand);
+
+  //set content
+  title.textContent = info.title;
+  date.textContent = info.date;
+  para1.textContent = info.firstParagraph;
+  para2.textContent = info.secondParagraph;
+  para3.textContent = info.thirdParagraph;
+  expand.textContent = '\u25bc';
+  
+
+  //apply styles
+  article.classList.add('article');
+  date.classList.add('date');
+  expand.classList.add('expandButton');
+
+  
+  //toggle article open on click
+  expand.addEventListener('click', (event) => {
+       article.classList.toggle('article-open');
+  })
+
+  return article;
+}
+
+//get div container
+const art = document.querySelector('.articles');
+
+//iterate over array
+data.map(parameter => {
+  art.appendChild(contentCreator(parameter));
+});

@@ -51,7 +51,7 @@ function menuCreator(){
 
   //set content
   menuItems.map(over => {
-    const list = document.createElement('li')
+    const list = document.createElement('li');
      list.textContent = over;
      bullet.appendChild(list);
   });

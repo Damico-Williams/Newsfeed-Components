@@ -126,52 +126,61 @@ const data = [
 */
 
 
-function contentCreator (info){
-  //create elements
-  const article = document.createElement('div');
-  const title = document.createElement('h2');
-  const date = document.createElement('p');
-  const para1 = document.createElement('p');
-  const para2 = document.createElement('p');
-  const para3 = document.createElement('p');
-  const expand = document.createElement('span');
+
+
+function contentCreator (content){
+//Step 1: create elements
+   const article = document.createElement('div');
+   const title = document.createElement('h2');
+   const date = document.createElement('p');
+   const paragraph1= document.createElement('p');
+   const paragraph2 = document.createElement('p');
+   const paragraph3 = document.createElement('p');
+   const expandBtn = document.createElement('span');
+   
   
 
-  //create structure
-  article.appendChild(title);
-  article.appendChild(date);
-  article.appendChild(para1);
-  article.appendChild(para2);
-  article.appendChild(para3);
-  article.appendChild(expand);
+//Step 2: create structure
+   article.appendChild(title)
+   article.appendChild(date);
+   article.appendChild(paragraph1);
+   article.appendChild(paragraph2)
+   article.appendChild(paragraph3);
+   article.appendChild(expandBtn);
 
-  //set content
-  title.textContent = info.title;
-  date.textContent = info.date;
-  para1.textContent = info.firstParagraph;
-  para2.textContent = info.secondParagraph;
-  para3.textContent = info.thirdParagraph;
-  expand.textContent = '\u25bc';
-  
-
-  //apply styles
-  article.classList.add('article');
-  date.classList.add('date');
-  expand.classList.add('expandButton');
 
   
-  //toggle article open on click
-  expand.addEventListener('click', (event) => {
-       article.classList.toggle('article-open');
-  })
+
+//Step 3: set content
+  title.textContent = content.title;
+  date.textContent = content.date;
+  paragraph1.textContent = content.firstParagraph;
+  paragraph2.textContent = content.secondParagraph;
+  paragraph3.textContent = content.thirdParagraph;
+  expandBtn.textContent = '\u25bc';
+  
+
+//Step 4: apply styles
+   article.classList.add('article');
+   date.classList.add('date');
+   expandBtn.classList.add('expandButton');
+
+  
+//Step 5: toggle article open on click (event listener)
+  expandBtn.addEventListener('click', () => {
+       article.classList.toggle('article-open')
+  });
 
   return article;
 }
 
-//get div container
-const art = document.querySelector('.articles');
 
-//iterate over array
-data.map(parameter => {
-  art.appendChild(contentCreator(parameter));
+//Grab div container
+const con = document.querySelector('.articles');
+
+
+
+//Iterate over array
+data.forEach(arr => {
+  con.appendChild(contentCreator(arr));
 });

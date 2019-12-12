@@ -166,7 +166,7 @@ function contentCreator (content){
    expandBtn.classList.add('expandButton');
 
   
-//Step 5: toggle article open on click (event listener)
+//Extra Step 5: toggle article open on click (event listener)
   expandBtn.addEventListener('click', () => {
        article.classList.toggle('article-open')
   });

@@ -36,45 +36,52 @@ let menuItems = [
 
 
 
-function menuCreator(){
 
-  //create elements
-  const mainMenu = document.createElement('div');
-  const bullet = document.createElement('ul');
+
+function menuCreator() {
+
+//Step 1: create elements
+  const Menu = document.createElement('div');
+  const Navigation = document.createElement('ul');
 
   
 
-  //create structure
-  mainMenu.appendChild(bullet);
+//Step 2: create structure
+  Menu.appendChild(Navigation);
  
 
 
-  //set content
-  menuItems.map(over => {
+// Step 3: set content
+  menuItems.forEach(nav => {
     const list = document.createElement('li');
-     list.textContent = over;
-     bullet.appendChild(list);
+     list.textContent = nav;
+     Navigation.appendChild(list);
   });
 
 
-  //apply styles
-  mainMenu.classList.add('menu');
+//Step 4: Apply styles
+  Menu.classList.add('menu');
   
 
-  //Add event listener
+//Step 5: Add event listener
+  const menuButton = document.querySelector('.menu-button')
   
-  menuButton.addEventListener('click', (event) => {
-    mainMenu.classList.toggle('menu--open')
+  menuButton.addEventListener('click', () => {
+    Menu.classList.toggle('menu--open')
 })
 
 
-  return mainMenu;
+  return Menu;
 };
 
-//get div
-const header = document.querySelector('.header h1');
-const menuButton = document.querySelector('.menu-button');
+//Grab div container
+const header = document.querySelector('.header');
 
 
+//Append
 header.appendChild(menuCreator())
+
+
+
+
 
